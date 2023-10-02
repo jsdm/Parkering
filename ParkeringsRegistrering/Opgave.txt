@@ -1,0 +1,19 @@
+Du skal lave den microservice, der bruges, når en person registrerer sin parkering.
+
+Det skal være muligt at foretage følgende opgaver med parkeringsservicen:
+
+Registrer parkering
+Tjek om bil er registreret til pakering på en given plads
+Slet alle parkeringer for et registreringsnummer (i tilfælde af at brugeren vil bruge sin GDPR-mæssige ret til at blive glemt)
+
+
+Der skal som minimum registreres disse oplysninger om hver parkering
+
+Registreringsnummer (nummerplade)
+Tidspunkt
+Mobilnummer og/eller e-mail
+
+Identifikation af parkeringspladsen, der er parkeret på (du bestemmer selv, hvordan de skal registreres)
+
+Brug en static variabel som in-memory database som i eksemplerne i bogens kapitel 2.
+eventstore og shoppingcartstore fra bog mappen ch2
