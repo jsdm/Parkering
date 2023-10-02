@@ -29,16 +29,3 @@ namespace CommunicationService.Controllers
         //[HttpGet("{PhoneNumber:int}")]
     }
 }
-// --------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Email - servicen findes på denne adresse: https://twilioproxy.azurewebsites.net/api/SendEmail?code=qMTJzZtnKGD4c0LgyYHyepoT7VdFOir1Wig9yrU6LeQLAzFuCJeiWw==
-
-//Den modtager data med post. Det skal være et json-objekt med følgende værdier
-
-//receiver - modtagerens email-adresse
-//message - beskedens indhold
-//subject - beskedes titel
-//html - besked formatteret i html (valgfrit)
-//Der er følgende begrænsninger af servicen:
-
-//Alle e-mails sendes fra min adresse (ktlh@smartlearning.dk)
-//Du kan kun sende til din smartlearning eller cphbusiness-adresse.

@@ -5,10 +5,15 @@ using System.Net.Http.Json;
 
 namespace CommunicationService.Services
 {
-    public class EmailSendApiService:IEmailSendApiService
+    public class EmailSendApiService : IEmailSendApiService
     {
-        private readonly string url = "https://twilioproxy.azurewebsites.net/api/SendEmail?code=qMTJzZtnKGD4c0LgyYHyepoT7VdFOir1Wig9yrU6LeQLAzFuCJeiWw==";
+        private readonly IConfiguration _configuration;
+        private string url;
         public static HttpClient _httpClient= new HttpClient();
+        public EmailSendApiService(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public async Task<string> SendEmailAsync(string emailAddress)
         {
             Email email = new Email()
@@ -19,7 +24,7 @@ namespace CommunicationService.Services
                 html = "<h1>Parkering.dk</h1>\n<h3>Din parkering er nu startet!</h3>"
             };
             using HttpResponseMessage response = await _httpClient.PostAsJsonAsync(
-                url, new Email()
+                _configuration.GetValue<string>("emailUrl"), new Email()
                 {
                     receiver = emailAddress,
                     message = "Din parkering er begyndt",

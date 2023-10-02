@@ -6,7 +6,8 @@ using Polly;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+// For at kunne læse fra user secrets via configurattion
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -37,23 +38,8 @@ app.MapControllers();
 
 app.Run();
 
-//Email - servicen findes på denne adresse: https://twilioproxy.azurewebsites.net/api/SendEmail?code=qMTJzZtnKGD4c0LgyYHyepoT7VdFOir1Wig9yrU6LeQLAzFuCJeiWw==
 
-//Den modtager data med post. Det skal være et json-objekt med følgende værdier
-
-//receiver - modtagerens email-adresse
-//message - beskedens indhold
-//subject - beskedes titel
-//html - besked formatteret i html (valgfrit)
-//Der er følgende begrænsninger af servicen:
-
-//Alle e-mails sendes fra min adresse (ktlh@smartlearning.dk)
-//Du kan kun sende til din smartlearning eller cphbusiness-adresse.
-
-
-
-//SMS - servicen findes på denne adresse: https://twilioproxy.azurewebsites.net/api/SendSMS?code=biIj0VMV608PIppCMrQDNn477AqqA7-w4a7mE8kug2HvAzFuxgovmQ==
-
+// +++++++++++++++++ SMS +++++++++++++++++++++++++
 //Den kaldes med post med et json-objekt som body. Objektet skal indeholde disse attributter:
 
 //receiver - telefonnummeret på modtageren. Skal starte med +45
