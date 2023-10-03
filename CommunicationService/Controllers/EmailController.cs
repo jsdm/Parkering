@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace CommunicationService.Controllers
 {
-    [Route("api/sendCom")]
+    [Route("api/sendEmail")]
     [ApiController]
     public class EmailController : ControllerBase
     {
@@ -24,8 +24,5 @@ namespace CommunicationService.Controllers
             string response = await _emailSendApiService.SendEmailAsync(emailAddress);
             return Ok(response);
         }
-
-
-        //[HttpGet("{PhoneNumber:int}")]
     }
 }

@@ -1,10 +1,7 @@
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Runtime.ConstrainedExecution;
 using CommunicationService.Services;
 using Polly;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 // For at kunne læse fra user secrets via configurattion
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
@@ -14,12 +11,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Brug Polly til retry af http requests
-builder.Services.AddHttpClient<IEmailSendApiService, EmailSendApiService>()
+builder.Services.AddHttpClient<ISmsSendApiService, SmsSendApiService>()
     .AddTransientHttpErrorPolicy(p => p.WaitAndRetryAsync(
         3, attempt => TimeSpan.FromMilliseconds(100 * Math.Pow(2, attempt))));
 
-builder.Services.Scan(selector => selector.FromAssemblyOf<IEmailSendApiService>()
-.AddClasses(classes => classes.AssignableTo<IEmailSendApiService>())
+builder.Services.Scan(select => select.FromAssemblyOf<ISmsSendApiService>()
+.AddClasses(classs => classs.AssignableTo<ISmsSendApiService>())
 .AsImplementedInterfaces());
 var app = builder.Build();
 

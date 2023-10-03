@@ -16,13 +16,6 @@ namespace CommunicationService.Services
         }
         public async Task<string> SendEmailAsync(string emailAddress)
         {
-            Email email = new Email()
-            {
-                receiver = emailAddress,
-                message = "Din parkering er begyndt",
-                subject = "Parkering Startet",
-                html = "<h1>Parkering.dk</h1>\n<h3>Din parkering er nu startet!</h3>"
-            };
             using HttpResponseMessage response = await _httpClient.PostAsJsonAsync(
                 _configuration.GetValue<string>("emailUrl"), new Email()
                 {
