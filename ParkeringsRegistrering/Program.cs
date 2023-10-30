@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using ParkeringsRegistrering.Event;
 using ParkeringsRegistrering.Parkering;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,11 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 //builder.Services.AddScoped<IParkeringsRegistreringStore, ParkeringsRegistreringStore>();
-builder.Services.Scan(selector =>
-    selector
-        .FromAssemblyOf<IParkeringsRegistreringStore>()
-        .AddClasses()
-        .AsImplementedInterfaces());
+//builder.Services.AddScoped<IEventstore, EventStore>();
+//builder.Services.Scan(selector =>
+//    selector
+//        .FromAssemblyOf<Program>()
+//        .AddClasses()
+//        .AsImplementedInterfaces());
+builder.Services.Scan(
+    scan =>
+        scan.FromAssemblyOf<Program>()
+            .AddClasses(c => c.Where(t => t.GetMethods().All(m => m.Name != "<Clone>$")))
+            .AsImplementedInterfaces()
+);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

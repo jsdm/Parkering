@@ -5,12 +5,12 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY . .
+COPY ["ParkeringsRegistrering/ParkeringsRegistrering.csproj", "ParkeringsRegistrering/"]
 
 # restore NuGet packages
-RUN dotnet restore "ParkeringsRegistrering.csproj"
-#COPY . .
-#WORKDIR "/src/ParkeringsRegistrering"
+RUN dotnet restore "ParkeringsRegistrering/ParkeringsRegistrering.csproj"
+COPY . .
+WORKDIR "/src/ParkeringsRegistrering"
 # Build in release mode
 RUN dotnet build "ParkeringsRegistrering.csproj" -c Release -o /app/build
 

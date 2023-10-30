@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ParkeringsRegistrering.Event;
 
 namespace ParkeringsRegistrering.Parkering
 {
@@ -8,9 +9,14 @@ namespace ParkeringsRegistrering.Parkering
     public class ParkeringsRegistreringController : ControllerBase
     {
         private readonly IParkeringsRegistreringStore parkeringsRegistreringStore;
-        public ParkeringsRegistreringController(IParkeringsRegistreringStore parkeringsRegistreringStore)
+        private readonly IEventstore eventStore;
+        public ParkeringsRegistreringController(
+            IParkeringsRegistreringStore parkeringsRegistreringStore,
+            IEventstore eventStore
+            )
         {
             this.parkeringsRegistreringStore = parkeringsRegistreringStore;
+            this.eventStore = eventStore;
         }
 
         [HttpGet("{registreringsNummer}")]
@@ -33,6 +39,7 @@ namespace ParkeringsRegistrering.Parkering
                 Phone = phonenumber
             };
             parkeringsRegistreringStore.Save(opretParkering);
+            eventStore.Raise("NewParkingStarted", opretParkering);
             return opretParkering;
         }
 

@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkeringsRegistrering", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BiltypeService", "BiltypeService\BiltypeService.csproj", "{FA7DA98B-158B-43C8-B7F9-CEE66EA39B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunicationService", "CommunicationService\CommunicationService.csproj", "{52D63372-CABD-4B1C-A5E9-D306B66D995A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommunicationService", "CommunicationService\CommunicationService.csproj", "{52D63372-CABD-4B1C-A5E9-D306B66D995A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventCheckToSendComs", "EventCheckToSendComs\EventCheckToSendComs.csproj", "{BA1AE1C6-E245-4EDC-8AA0-DD01F8F29F26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{52D63372-CABD-4B1C-A5E9-D306B66D995A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52D63372-CABD-4B1C-A5E9-D306B66D995A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52D63372-CABD-4B1C-A5E9-D306B66D995A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1AE1C6-E245-4EDC-8AA0-DD01F8F29F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1AE1C6-E245-4EDC-8AA0-DD01F8F29F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1AE1C6-E245-4EDC-8AA0-DD01F8F29F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1AE1C6-E245-4EDC-8AA0-DD01F8F29F26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

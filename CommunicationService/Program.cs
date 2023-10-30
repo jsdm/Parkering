@@ -35,16 +35,3 @@ app.MapControllers();
 
 app.Run();
 
-
-// +++++++++++++++++ SMS +++++++++++++++++++++++++
-//Den kaldes med post med et json-objekt som body. Objektet skal indeholde disse attributter:
-
-//receiver - telefonnummeret på modtageren. Skal starte med +45
-//key - din unikke nøgle som giver dig adgang til at sende til din egen telefon
-//message - den besked der skal sendes
-
-
-//Begrænsninger i servicen:
-
-//Alle beskeder sendes fra det samme afsender nummer
-//Du kan kun sende til dit eget telefonnummer.
