@@ -3,14 +3,14 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["CommunicationService/CommunicationService.csproj", "CommunicationService/"]
-RUN dotnet restore "CommunicationService/CommunicationService.csproj"
+#COPY ["CommunicationService/CommunicationService.csproj", "CommunicationService/"]
 COPY . .
-WORKDIR "/src/CommunicationService"
+RUN dotnet restore "CommunicationService.csproj"
+#COPY . .
+#WORKDIR "/src/CommunicationService"
 RUN dotnet build "CommunicationService.csproj" -c Release -o /app/build
 
 FROM build AS publish
